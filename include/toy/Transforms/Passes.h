@@ -12,6 +12,7 @@ std::unique_ptr<mlir::Pass> createToyCSEPass();
 std::unique_ptr<mlir::Pass> createToyConstantFoldPass();
 std::unique_ptr<mlir::Pass> createToyToArithPass();
 std::unique_ptr<mlir::Pass> createToyToLinalgPass();
+std::unique_ptr<mlir::Pass> createToyTensorMemoryReusePass();
 void registerToyPasses();
 void registerToyPassPipelines();
 
@@ -23,6 +24,7 @@ void registerToyCSEPass();
 void registerToyConstantFoldPass();
 void registerToyToArithPass();
 void registerToyToLinalgPass();
+void registerToyTensorMemoryReusePass();
 }
 }
 

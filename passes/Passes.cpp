@@ -24,6 +24,7 @@ void toy::registerToyPasses() {
   detail::registerToyConstantFoldPass();
   detail::registerToyToArithPass();
   detail::registerToyToLinalgPass();
+  detail::registerToyTensorMemoryReusePass();
 }
 
 /* ============================================================
