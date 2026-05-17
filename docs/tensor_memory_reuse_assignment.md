@@ -62,35 +62,6 @@ Use this order:
 6. Validate memory constraints.
 7. Compute per-op and max peak memory.
 
-## Required Report Sections
-
-Your pass report should include these sections:
-
-1. `Operation List`
-2. `Producer-Consumer Edges`
-3. `Tensor Lifetime Table`
-4. `Live Tensors Before/During/After`
-5. `Tensor Slot Assignment`
-6. `Workspace Slot Assignment`
-7. `Output Slot Per Operation`
-8. `Peak Memory Per Operation`
-9. `Maximum Peak Memory`
-10. `Algorithm Notes`
-11. `Optimality Notes`
-
-## Starter Rules
-
-Keep starter files exercise-ready and unsolved.
-
-Do not commit any final solved content such as:
-
-- Completed lifetime table
-- Final live-before/during/after answers
-- Final tensor-to-slot assignment
-- Final workspace-to-slot assignment
-- Final peak-memory answer
-- Final validity/optimality conclusion for the provided graph
-
 ## Suggested Validation Loop
 
 1. Build: `ninja -C build toy-passes toy-opt`
