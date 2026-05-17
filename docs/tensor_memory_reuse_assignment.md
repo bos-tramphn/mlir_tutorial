@@ -2,9 +2,9 @@
 
 This is a compiler-style memory planning exercise over a Toy SSA graph.
 
-## Starter Input
+## Get Started
 
-- Graph file: `examples/tensor_memory_reuse.ttir`
+- Graph input: `examples/assignment_input.mlir`
 - Run command: `examples/run_tensor_memory_reuse.sh`
 - Pass entry: `-toy-tensor-memory-reuse`
 
@@ -16,11 +16,11 @@ This is a compiler-style memory planning exercise over a Toy SSA graph.
 | op1 | `%b = relu(%a)`     |       ReLU |          40 |            5 |
 | op2 | `%c = conv(%a)`     |       Conv |          30 |           30 |
 | op3 | `%d = mul(%c)`      |        Mul |          30 |           10 |
-| op4 | `%e = add(%b, %d)`  | Add / join |          40 |            8 |
+| op4 | `%e = add(%b, %d)`  |        Add |          40 |            8 |
 | op5 | `%f = relu(%e)`     |       ReLU |          40 |            5 |
 | op6 | `%g = conv(%e)`     |       Conv |          50 |           30 |
-| op7 | `%h = sub(%g, %a)`  | Sub / join |          50 |            8 |
-| op8 | `%i = add(%f, %h)`  | Add / join |          50 |            8 |
+| op7 | `%h = sub(%g, %a)`  |        Sub |          50 |            8 |
+| op8 | `%i = add(%f, %h)`  |        Add |          50 |            8 |
 | op9 | `%j = conv(%i)`     |       Conv |          60 |           30 |
 
 ### Reference Slot Capacities
