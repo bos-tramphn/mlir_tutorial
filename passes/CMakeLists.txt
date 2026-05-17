@@ -7,6 +7,8 @@ add_mlir_library(toy-passes SHARED
   ToyToArithPass.cpp
   ToyToLinalgPass.cpp
   MemoryAnalysisPass.cpp
+  MemoryPlanning.cpp
+  OpValidation.cpp
   Passes.cpp
   DEPENDS
   ToyOpsIncGen

@@ -8,6 +8,34 @@ This starter is for a compiler-style memory planning exercise over a Toy SSA gra
 - Run command: `examples/run_tensor_memory_reuse.sh`
 - Pass entry: `-toy-tensor-memory-reuse`
 
+### Reference Operation Graph
+
+| Op  | Expression          |       Type | Output size | Compute size |
+| --- | ------------------- | ---------: | ----------: | -----------: |
+| op0 | `%a = conv(%input)` |       Conv |          40 |           30 |
+| op1 | `%b = relu(%a)`     |       ReLU |          40 |            5 |
+| op2 | `%c = conv(%a)`     |       Conv |          30 |           30 |
+| op3 | `%d = mul(%c)`      |        Mul |          30 |           10 |
+| op4 | `%e = add(%b, %d)`  | Add / join |          40 |            8 |
+| op5 | `%f = relu(%e)`     |       ReLU |          40 |            5 |
+| op6 | `%g = conv(%e)`     |       Conv |          50 |           30 |
+| op7 | `%h = sub(%g, %a)`  | Sub / join |          50 |            8 |
+| op8 | `%i = add(%f, %h)`  | Add / join |          50 |            8 |
+| op9 | `%j = conv(%i)`     |       Conv |          60 |           30 |
+
+### Reference Slot Capacities
+
+| Slot  | Capacity |
+| ----- | -------: |
+| slot0 |       60 |
+| slot1 |       50 |
+| slot2 |       50 |
+| slot3 |       40 |
+| slot4 |       30 |
+
+Note: `toy.mul` is currently binary in this starter dialect, so the graph input
+encodes `mul(%c)` as `toy.mul(%c, %c)`.
+
 The input graph encodes:
 
 - Compute ops: `toy.conv`, `toy.relu`, `toy.add`, `toy.mul`, `toy.sub`
@@ -21,7 +49,8 @@ The input graph encodes:
 
 ## Your Task
 
-Implement analysis/reporting in `passes/MemoryAnalysisPass.cpp`.
+Implement analysis/reporting in `passes/MemoryPlanning.cpp`.
+`passes/MemoryAnalysisPass.cpp` is the baseline pass wrapper and should stay thin.
 
 Use this order:
 
