@@ -15,7 +15,7 @@ add_mlir_library(toy-passes SHARED
   MLIRFuncDialect
   MLIRPass
   MLIRTransforms
-  MLIRArithDialect
+  MLIRArithmeticDialect
   MLIRLinalgDialect
 )
 

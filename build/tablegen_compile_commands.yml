@@ -1,0 +1,12 @@
+--- !FileInfo:
+  filepath: "/home/tramphan/workspace/mlir/mlir_tutorial/toy/ToyOps.td"
+  includes: "/home/tramphan/workspace/mlir/mlir_tutorial/toy;"
+--- !FileInfo:
+  filepath: "/home/tramphan/workspace/mlir/mlir_tutorial/toy/ToyOps.td"
+  includes: "/home/tramphan/workspace/mlir/mlir_tutorial/toy;"
+--- !FileInfo:
+  filepath: "/home/tramphan/workspace/mlir/mlir_tutorial/toy/ToyOps.td"
+  includes: "/home/tramphan/workspace/mlir/mlir_tutorial/toy;"
+--- !FileInfo:
+  filepath: "/home/tramphan/workspace/mlir/mlir_tutorial/toy/ToyOps.td"
+  includes: "/home/tramphan/workspace/mlir/mlir_tutorial/toy;"

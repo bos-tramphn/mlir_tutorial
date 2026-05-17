@@ -5,7 +5,7 @@ include "ToyDialect.td"
 class Toy_Op<string mnemonic, list<Trait> traits = []>
     : Op<Toy_Dialect, mnemonic, traits>;
 
-def Toy_AddOp : Toy_Op<"add", [Pure]> {
+def Toy_AddOp : Toy_Op<"add", [NoSideEffect]> {
   let arguments = (ins AnyType:$lhs, AnyType:$rhs);
   let results = (outs AnyType:$output);
   let summary = "Toy addition op";
@@ -14,7 +14,7 @@ def Toy_AddOp : Toy_Op<"add", [Pure]> {
   }];
 }
 
-def Toy_MulOp : Toy_Op<"mul", [Pure]> {
+def Toy_MulOp : Toy_Op<"mul", [NoSideEffect]> {
   let arguments = (ins AnyType:$lhs, AnyType:$rhs);
   let results = (outs AnyType:$output);
   let summary = "Toy multiplication op";

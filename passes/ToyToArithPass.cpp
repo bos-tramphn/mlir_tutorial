@@ -2,7 +2,7 @@
 
 #include "toy/ToyOps.h"
 
-#include "mlir/Dialect/Arith/IR/Arith.h"
+#include "mlir/Dialect/Arithmetic/IR/Arithmetic.h"
 #include "mlir/Dialect/Func/IR/FuncOps.h"
 #include "mlir/IR/BuiltinTypes.h"
 #include "mlir/IR/PatternMatch.h"
@@ -75,7 +75,7 @@ struct ToyToArithPass
   }
 
   void getDependentDialects(DialectRegistry &registry) const final {
-    registry.insert<arith::ArithDialect>();
+    registry.insert<arith::ArithmeticDialect>();
   }
 
   void runOnOperation() override {

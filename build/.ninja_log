@@ -1,0 +1,24 @@
+# ninja log v5
+2	22	1773586406243886084	toy/ToyOps.cpp.inc	9246617abefb51a1
+2	22	1773586406243886084	/home/tramphan/workspace/mlir/mlir_tutorial/build/toy/ToyOps.cpp.inc	9246617abefb51a1
+1	25	1773586406243886084	toy/ToyDialect.h.inc	5a50ab3fad3ec216
+1	25	1773586406243886084	/home/tramphan/workspace/mlir/mlir_tutorial/build/toy/ToyDialect.h.inc	5a50ab3fad3ec216
+2	29	1773586406247886088	toy/ToyOps.h.inc	1b71bb8d94528176
+2	29	1773586406247886088	/home/tramphan/workspace/mlir/mlir_tutorial/build/toy/ToyOps.h.inc	1b71bb8d94528176
+0	31	1773586406247886088	toy/ToyDialect.cpp.inc	31da49f9512bb4af
+0	31	1773586406247886088	/home/tramphan/workspace/mlir/mlir_tutorial/build/toy/ToyDialect.cpp.inc	31da49f9512bb4af
+32	5347	1773586411571881996	toy/CMakeFiles/obj.toy-dialect.dir/DialectRegistration.cpp.o	f1cdca3fddeb7c6e
+35	9230	1773586415459874169	passes/CMakeFiles/toy-passes.dir/ToyCSEPass.cpp.o	88e046909562973a
+37	10619	1773586416847873803	passes/CMakeFiles/toy-passes.dir/ToyToArithPass.cpp.o	df894b12f23c1b4a
+34	13242	1773586419467871224	passes/CMakeFiles/toy-passes.dir/ToyDCEPass.cpp.o	7a37f63e4885d082
+33	14134	1773586420359867330	passes/CMakeFiles/toy-passes.dir/ShapeInferencePass.cpp.o	77eccd9e81c731b4
+37	14339	1773586420567866408	passes/CMakeFiles/toy-passes.dir/ToyToLinalgPass.cpp.o	43e4b59582dc2905
+32	14691	1773586420915864864	toy/CMakeFiles/obj.toy-dialect.dir/Ops.cpp.o	d0d34bb8ee6b8b6
+34	14922	1773586421151863801	passes/CMakeFiles/toy-passes.dir/CanonicalizePass.cpp.o	677e104ffadc9f4d
+14692	14930	1773586421151863801	toy/libtoy-dialect.a	9ea8c64608154e89
+41	15145	1773586421375862781	tools/CMakeFiles/toy-opt.dir/toy-opt.cpp.o	24712e62303ef76f
+36	15211	1773586421439862490	passes/CMakeFiles/toy-passes.dir/ToyConstantFoldPass.cpp.o	cb429efb42c36d17
+39	17004	1773586423235878345	passes/CMakeFiles/toy-passes.dir/Passes.cpp.o	16fd74a79d5e34b6
+17005	18840	1773586425063885533	passes/libtoy-passes.so.15	1fba04e716f43a57
+18840	18850	1773586425063885533	passes/libtoy-passes.so	6db7ded9839d0dbb
+18850	19546	1773586425771882735	tools/toy-opt	40c1de84079ce052
