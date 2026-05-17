@@ -1,6 +1,6 @@
-# Tensor Memory Reuse Assignment (Starter)
+# Tensor Memory Reuse Assignment
 
-This starter is for a compiler-style memory planning exercise over a Toy SSA graph.
+This is a compiler-style memory planning exercise over a Toy SSA graph.
 
 ## Starter Input
 
@@ -49,8 +49,8 @@ The input graph encodes:
 
 ## Your Task
 
-Implement analysis/reporting in `passes/MemoryPlanning.cpp`.
-`passes/MemoryAnalysisPass.cpp` is the baseline pass wrapper and should stay thin.
+Implement the analysis and reporting in `passes/MemoryPlanning.cpp`.
+Keep `passes/MemoryAnalysisPass.cpp` as a thin pass wrapper that calls the implementation entrypoint.
 
 Use this order:
 
@@ -62,9 +62,9 @@ Use this order:
 6. Validate memory constraints.
 7. Compute per-op and max peak memory.
 
-## Required Output Sections (Template)
+## Required Report Sections
 
-Print these section headers in your report, then fill them from your implementation:
+Your pass report should include these sections:
 
 1. `Operation List`
 2. `Producer-Consumer Edges`
@@ -95,4 +95,4 @@ Do not commit any final solved content such as:
 
 1. Build: `ninja -C build toy-passes toy-opt`
 2. Run example: `./examples/run_tensor_memory_reuse.sh`
-3. Run starter test: `toy-opt test/tensor_memory_reuse/basic.mlir -toy-tensor-memory-reuse`
+3. Run assignment input: `toy-opt test/assigment_input.mlir -toy-tensor-memory-reuse`
