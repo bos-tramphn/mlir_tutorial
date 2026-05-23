@@ -3,10 +3,9 @@
 This is a compiler-style memory planning exercise over a Toy SSA graph.
 
 ## Get Started
-
-- Graph input: `examples/assignment_input.mlir`
-- Run command: `examples/run_tensor_memory_reuse.sh`
-- Pass entry: `-toy-tensor-memory-reuse`
+1. Build: `ninja -C build toy-passes toy-opt`
+2. Run example: `./examples/run_tensor_memory_reuse.sh`
+3. Run assignment input: `toy-opt test/assigment_input.mlir -toy-tensor-memory-reuse`
 
 ### Reference Operation Graph
 
@@ -61,9 +60,3 @@ Use this order:
 5. Plan slot usage for tensors/workspaces.
 6. Validate memory constraints.
 7. Compute per-op and max peak memory.
-
-## Suggested Validation Loop
-
-1. Build: `ninja -C build toy-passes toy-opt`
-2. Run example: `./examples/run_tensor_memory_reuse.sh`
-3. Run assignment input: `toy-opt test/assigment_input.mlir -toy-tensor-memory-reuse`

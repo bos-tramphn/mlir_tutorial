@@ -16,7 +16,7 @@ LogicalResult toy::runToyMemoryPlanning(ModuleOp module) {
   // TODO(MemoryPlanning): Compute tensor lifetimes (start/end by last use).
   // TODO(MemoryPlanning): Compute live-before/live-during/live-after sets.
   // TODO(MemoryPlanning): Implement scheduler/allocation algorithm.
-  // TODO(MemoryPlanning): Validate memory constraints from context.txt.
+  // TODO(MemoryPlanning): Validate memory constraints.
   // TODO(MemoryPlanning): Compute peak memory and print assignment report.
 
   llvm::outs() << "=== Tensor Memory Reuse Starter ===\n";

@@ -30,10 +30,39 @@ struct ValidationContext {
   llvm::SmallVector<OpInfo, 16> opInfos;
 };
 
+// A candidate assignment produced by a planning implementation.
+// One tensor placement is expected per compute-op output value.
+struct TensorPlacement {
+  mlir::Value tensor;
+  int64_t slotIndex = -1;
+};
+
+// One operation placement is expected per compute op.
+struct OperationPlacement {
+  int64_t opIndex = -1;
+  int64_t workspaceSlotIndex = -1;
+  int64_t outputSlotIndex = -1;
+};
+
+struct MemoryPlanCandidate {
+  llvm::SmallVector<TensorPlacement, 16> tensorPlacements;
+  llvm::SmallVector<OperationPlacement, 16> operationPlacements;
+};
+
 // Baseline input validation for the memory-planning assignment.
 // This function validates attributes/op-shapes and fills `context`.
 mlir::LogicalResult validateToyMemoryPlanningInput(mlir::ModuleOp module,
                                                    ValidationContext &context);
+
+// Validates slot storage constraints for a candidate memory plan:
+// - tensor/workspace capacity checks
+// - overlapping tensor lifetime slot conflicts
+// - workspace/output conflicts with live tensors
+// - per-op peak-vs-budget checks
+mlir::LogicalResult
+validateToyMemorySlotStorage(mlir::ModuleOp module,
+                             const ValidationContext &context,
+                             const MemoryPlanCandidate &candidate);
 
 } // namespace toy
 
