@@ -24,5 +24,8 @@ LogicalResult toy::runToyMemoryPlanning(ModuleOp module) {
                << " compute ops.\n";
   llvm::outs() << "TODO: implement liveness analysis, scheduling, and memory "
                   "validation algorithm.\n";
+
+  uint64_t movementTime = 0;
+  llvm::outs() << "Total movement time: " << movementTime << "\n";
   return success();
 }

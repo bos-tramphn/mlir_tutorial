@@ -47,6 +47,9 @@ struct OperationPlacement {
 struct MemoryPlanCandidate {
   llvm::SmallVector<TensorPlacement, 16> tensorPlacements;
   llvm::SmallVector<OperationPlacement, 16> operationPlacements;
+  // Optional. When non-negative, validation checks that this equals the sum of
+  // slot-to-slot movement costs over all producer-consumer operands.
+  int64_t totalMovementTime = -1;
 };
 
 // Baseline input validation for the memory-planning assignment.
@@ -59,6 +62,7 @@ mlir::LogicalResult validateToyMemoryPlanningInput(mlir::ModuleOp module,
 // - overlapping tensor lifetime slot conflicts
 // - workspace/output conflicts with live tensors
 // - per-op peak-vs-budget checks
+// - optional total movement time consistency check
 mlir::LogicalResult
 validateToyMemorySlotStorage(mlir::ModuleOp module,
                              const ValidationContext &context,

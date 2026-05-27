@@ -5,7 +5,7 @@ This is a compiler-style memory planning exercise over a Toy SSA graph.
 ## Get Started
 1. Build: `ninja -C build toy-passes toy-opt`
 2. Run example: `./examples/run_tensor_memory_reuse.sh`
-3. Run assignment input: `toy-opt test/assigment_input.mlir -toy-tensor-memory-reuse`
+3. Run assignment input: `toy-opt examples/assigment_input.mlir -toy-tensor-memory-reuse`
 
 ### Reference Operation Graph
 
@@ -31,6 +31,30 @@ This is a compiler-style memory planning exercise over a Toy SSA graph.
 | slot2 |       50 |
 | slot3 |       40 |
 | slot4 |       30 |
+
+### Reference Slot Movement Times
+
+The following table gives the time required to move a tensor value from one
+slot to another. The cost is directional: moving from `slot0` to `slot1` may
+have a different cost than moving from `slot1` to `slot0`.
+
+| From / To | slot0 | slot1 | slot2 | slot3 | slot4 |
+| --------- | ----: | ----: | ----: | ----: | ----: |
+| slot0     |     0 |     7 |    18 |     4 |    22 |
+| slot1     |     6 |     0 |     5 |    19 |    11 |
+| slot2     |    17 |     4 |     0 |     8 |    20 |
+| slot3     |     3 |    21 |     9 |     0 |     6 |
+| slot4     |    23 |    10 |    16 |     5 |     0 |
+
+For every producer-consumer operand edge, add:
+
+```text
+movement_cost[slot(producer_output)][slot(consumer_output)]
+```
+
+The total movement time is the sum across all producer-consumer operands in the
+graph. If one operation consumes the same produced tensor through multiple
+operands, count each operand edge separately.
 
 Note: `toy.mul` is currently binary in this starter dialect, so the graph input
 encodes `mul(%c)` as `toy.mul(%c, %c)`.
@@ -60,3 +84,6 @@ Use this order:
 5. Plan slot usage for tensors/workspaces.
 6. Validate memory constraints.
 7. Compute per-op and max peak memory.
+8. Compute total movement time for the memory plan.
+9. Choose a plan that satisfies all correctness constraints and has the minimum
+   possible total movement time as possible.

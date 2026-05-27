@@ -112,6 +112,14 @@ static int64_t computeTotalSlotCapacity(const toy::ValidationContext &context) {
   return total;
 }
 
+static constexpr int64_t kMovementCost[5][5] = {
+    {0, 7, 18, 4, 22},
+    {6, 0, 5, 19, 11},
+    {17, 4, 0, 8, 20},
+    {3, 21, 9, 0, 6},
+    {23, 10, 16, 5, 0},
+};
+
 } // namespace
 
 LogicalResult toy::validateToyMemoryPlanningInput(ModuleOp module,
@@ -295,6 +303,32 @@ toy::validateToyMemorySlotStorage(ModuleOp module,
     if (!hasOpPlacement[i]) {
       module.emitError()
           << "missing operation placement for op index " << i;
+      return failure();
+    }
+  }
+
+  if (candidate.totalMovementTime >= 0) {
+    int64_t computedMovementTime = 0;
+    for (const OpInfo &consumer : context.opInfos) {
+      for (Value input : consumer.inputs) {
+        auto producerIt = outputToIndex.find(input);
+        if (producerIt == outputToIndex.end()) {
+          continue;
+        }
+
+        const int64_t producerSlot =
+            tensorSlotByProducer[producerIt->second];
+        const int64_t consumerSlot =
+            tensorSlotByProducer[consumer.index];
+        computedMovementTime += kMovementCost[producerSlot][consumerSlot];
+      }
+    }
+
+    if (candidate.totalMovementTime != computedMovementTime) {
+      module.emitError()
+          << "reported total movement time " << candidate.totalMovementTime
+          << " does not match computed total movement time "
+          << computedMovementTime;
       return failure();
     }
   }
